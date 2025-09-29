@@ -1,0 +1,203 @@
+﻿.logo {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  height: 700px;
+  filter: blur(9px);
+  z-index: -1;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.form-container {
+  position: absolute;
+  left: 40%;
+  max-width: 300px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 51px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #3a63bb;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  color: #e2ac18;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-bottom: 2px solid #3a63bb;
+  background-color: transparent;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  outline: none;
+  border-bottom: 2px solid #e2ac18;
+}
+
+button {
+  position: absolute;
+  left: 7%;
+  top: 85%;
+  width: 45%;
+  padding: 10px;
+  background-color: #e2ac18;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #f5d680;
+}
+
+.button2 {
+  position: absolute;
+  left: 50%;
+  top: 64.09%;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  border: none;
+  cursor: pointer;
+  padding: 10px 55px;
+  background-color: #bb493a;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.2s;
+  border-radius: 20px;
+}
+
+.button2:hover {
+  background-color: #da9a92;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f0f0f0;
+}
+#add-equipment {
+  font-size: 12px;
+  width: 20px;
+  height: 20px;
+  line-height: 1;
+  padding: 0;
+}
+
+#equipment {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+#equipment-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#partner_id {
+  visibility: hidden;
+}
+
+#tech_name {
+  visibility: hidden;
+}
+
+.confirmation-dialog {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 20px;
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.confirmation-dialog button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Media query pour les appareils mobiles */
+@media only screen and (max-width: 600px) {
+  .logo {
+    width: 100%;
+    height: auto;
+    width: 500px;
+    height: 500px;
+  }
+
+  .form-container {
+    left: 4%; /* Positionnement du formulaire plus à gauche */
+    max-width: calc(
+      100% - 10%
+    ); /* Utilisation de la largeur maximale disponible */
+    padding: 30px; /* Réduction de l'espacement à l'intérieur du formulaire pour les appareils mobiles */
+    border-radius: 51px; /* Réduction du rayon de bordure pour une apparence plus moderne */
+    margin-bottom: 50px;
+  }
+
+  h1 {
+    font-size: 20px; /* Ajustement de la taille de la police pour les titres sur les appareils mobiles */
+  }
+
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    font-size: 12px; /* Ajustement de la taille de la police pour les champs de formulaire sur les appareils mobiles */
+    padding: 6px; /* Réduction de la taille du rembourrage pour les champs de formulaire sur les appareils mobiles */
+  }
+
+  button {
+    padding: 6px; /* Réduction de la taille du rembourrage pour les boutons sur les appareils mobiles */
+    left: 5%; /* Positionnement plus à gauche */
+    top: 80%; /* Ajustement de la position verticale */
+  }
+
+  .button2 {
+    padding: 6px 60px;
+    left: 45%; /* Positionnement plus à gauche */
+    top: 57%; /* Ajustement de la position verticale */
+  }
+}

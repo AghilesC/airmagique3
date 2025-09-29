@@ -1,0 +1,273 @@
+body {
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+
+
+
+
+.container {
+    max-width: 100px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+}
+
+.partner-select {
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+
+
+table {
+    width: auto;
+    max-width: none;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 3px;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f2f2f2;
+}
+
+input[type="number"] {
+    border: 1px solid #ddd;
+    padding: 8px;
+    width: 40px;
+    text-align: center;
+}
+
+td.negative-value {
+    background-color: #ffcccc;
+}
+
+td.low-value {
+    background-color: #fdfd4c;
+}
+
+td.high-value {
+    background-color: #32ac32;
+}
+
+tr.selected td {
+    background-color: rgba(36, 33, 216, 0.3);
+    color: white;
+}
+
+.selected-column {
+    background-color: rgba(0, 0, 255, 0.3);
+    color: white;
+    z-index: 3; /* Assure que la surbrillance est au premier plan */
+}
+
+.selected-column.negative-value {
+    background-color: rgb(112, 120, 228); /* Couleur de fond avec transparence */
+}
+
+.selected-column.low-value {
+    background-color: rgb(112, 120, 228); /* Couleur de fond avec transparence */
+}
+
+.selected-column.high-value {
+    background-color: rgb(112, 120, 228); /* Couleur de fond avec transparence */
+}
+
+th:nth-child(3), td:nth-child(3) {
+    width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+th:nth-child(1), td:nth-child(1),
+th:nth-child(2), td:nth-child(2),
+th:nth-child(3), td:nth-child(3) {
+    position: sticky;
+    left: 0;
+    background-color: #f2f2f2;
+    z-index: 1;
+}
+
+th {
+    position: sticky;
+    top: 0;
+    background-color: #f2f2f2;
+    z-index: 2;
+}
+
+tr.selected td,
+th.sticky-column.selected,
+.selected-column {
+    background-color: #7078e4; /* Couleur de fond avec transparence */
+    color: white;
+    opacity: 1; /* Assurez-vous que l'opacité est à 1 pour éviter la transparence */
+}
+
+
+/* Exclure la couleur de fond bleue pour la cellule d'intersection sélectionnée */
+tr.selected td.selected-column {
+    background-color: transparent !important; /* Rendre le fond transparent */
+    color: inherit !important; /* Rétablir la couleur du texte par défaut */
+}
+
+/* Maintenir la coloration en fonction de la valeur pour la cellule d'intersection sélectionnée */
+tr.selected td.selected-column.negative-value {
+    background-color: #ffcccc !important; /* Couleur de fond pour les valeurs négatives */
+}
+
+tr.selected td.selected-column.low-value {
+    background-color: #fdfd4c !important; /* Couleur de fond pour les valeurs basses (low value) */
+}
+
+tr.selected td.selected-column.high-value {
+    background-color: #32ac32 !important; /* Couleur de fond pour les bonnes valeurs (good value) */
+}
+
+
+/* Style pour supprimer le soulignement des liens et changer la couleur au survol */
+a {
+    text-decoration: none; /* Supprime le soulignement par défaut */
+    color: black; /* Couleur de texte par défaut */
+}
+
+a:hover {
+    color: #7078e4; /* Couleur de texte au survol */
+}
+
+
+
+.menu-toggle {
+    position: fixed;
+    top: 20px;
+    left: 24px;
+    cursor: pointer;
+    z-index: 1000;
+    background-color: #ced1ff;
+    box-shadow: 0 5px 15px rgba(0, 52, 110, 0.616);
+
+
+    
+}
+
+.menu {
+    display: none;
+    position: absolute;
+    top: 0px; 
+    left: 50px; 
+    width: 200px;
+    border: 1.5px solid #ccc;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 25px 25px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+
+}
+
+
+
+.menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+}
+
+.menu ul li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.menu ul li:last-child {
+    border-bottom: none;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+
+
+.menu.sticky {
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+
+
+.menu-icon {
+    width: 13px;
+    height: 15px;
+    background-color: rgb(255, 255, 255); /* Définit la couleur de fond à blanc */
+    margin: -3px -5; /* Espacement entre les lignes du hamburger */
+    transition: transform 0.3s ease; /* Ajoute une transition fluide à la transformation */
+}
+
+/* Lorsque l'icône du menu est ouverte (au survol), applique une transformation pour déplacer les lignes */
+.menu-icon.open .line-1 {
+    transform: translateX(3px) rotate(45deg); /* Déplace et fait tourner la première ligne */
+}
+
+.menu-icon.open .line-2 {
+    opacity: 0; /* Masque la deuxième ligne */
+}
+
+.menu-icon.open .line-3 {
+    transform: translateX(3px) rotate(-45deg); /* Déplace et fait tourner la troisième ligne */
+}
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+    opacity: 0; /* Définir l'opacité initiale à 0 */
+    transition: opacity 3s ease; /* Ajouter une transition pour l'opacité */
+}
+h1 {
+    text-align: center;
+    margin-top: 50px;
+}
+.content {
+    display: none; /* Masquer le contenu par défaut */
+}
+
+
+
+
+.logo {
+    position: relative;
+    max-width: 250px; /* Largeur maximale du logo */
+    left: 45%;
+    opacity: 1; /* Définir l'opacité initiale du logo à 1 */
+}
+
+
+
+

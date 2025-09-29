@@ -1,0 +1,12 @@
+@font-face {
+  font-family: "Conduit ITC Regular";
+  src: url("fonts/Conduit ITC Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  font-family: "Conduit ITC Regular", -apple-system, BlinkMacSystemFont,
+    sans-serif;
+}

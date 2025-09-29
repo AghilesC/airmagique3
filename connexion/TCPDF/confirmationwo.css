@@ -1,0 +1,199 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0; 
+}
+
+.confirmation-container {
+    text-align: center;
+    position: relative;
+}
+
+.logo {
+    width: 700px; 
+    height: 700px; 
+    filter: blur(9px); 
+}
+
+.confirmation-message {
+    position: absolute;
+    top: 37%;
+    left: 48%;
+    transform: translate(-50%, -50%);
+    font-size: 24px; 
+    color: #ffffff;
+    white-space: nowrap; 
+    font-weight: bold; 
+    font-family: Arial, sans-serif; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); 
+    background-color: #3a63bb; 
+    padding: 10px 20px; 
+    border-radius: 10px; 
+}
+
+.confirmation-message2 {
+    position: absolute;
+    top: 45%;
+    left: 48%;
+    transform: translate(-50%, -50%);
+    font-size: 24px; 
+    color: #ffffff;
+    white-space: nowrap; 
+    font-weight: bold; 
+    font-family: Arial, sans-serif; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); 
+    background-color: #3a63bb; 
+    padding: 10px 20px; 
+    border-radius: 10px; 
+}
+
+.animation {
+    width: 215px; 
+    height: 200px; 
+    position: absolute;
+    top: 25%; 
+    left: 47%; 
+    transform: translate(-50%, -50%);
+}
+
+.link-button {
+    font-family: Arial, sans-serif; 
+    white-space: nowrap; 
+    top: 55%; 
+    left: 17.8%; 
+    position: absolute;
+    display: inline-block;
+    padding: 10px 133px;
+    margin-top: 30px;
+    background-color: #bb493a;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 20px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.link-button1 {
+    font-family: Arial, sans-serif; 
+    white-space: nowrap; 
+    top: 48%; 
+    left: 17.8%; 
+    position: absolute;
+    display: inline-block;
+    padding: 10px 25px;
+    margin-top: 30px;
+    background-color: #e2ac18;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 20px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+
+.link-button:hover {
+    background-color: #eb8b7e;
+}
+
+.link-button1:hover {
+    background-color: #f5d680;
+}
+
+@media screen and (max-width: 600px) {
+
+    .confirmation-container {
+        text-align: center;
+        position: relative;
+
+    }
+
+    .logo {
+        width: 100%; 
+        height: auto; 
+        width: 500px; 
+        height: 500px; 
+
+    }
+
+    .confirmation-message {
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 25px; 
+        color: #ffffff;
+        white-space: nowrap; 
+        font-weight: bold; 
+        font-family: Arial, sans-serif; 
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); 
+        background-color: #3a63bb; 
+        padding: 10px 20px; 
+        border-radius: 10px; 
+    }
+
+    .confirmation-message2 {
+        position: absolute;
+        top: 32%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 24px; 
+        color: #ffffff;
+        white-space: nowrap; 
+        font-weight: bold; 
+        font-family: Arial, sans-serif; 
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); 
+        background-color: #3a63bb; 
+        padding: 10px 20px; 
+        border-radius: 10px; 
+    }
+    
+    .link-button {
+        font-family: Arial, sans-serif; 
+        white-space: nowrap; 
+        top: 47%; 
+        left: 11.1%; 
+        font-size: 15px; 
+        position: absolute;
+        display: inline-block;
+        padding: 10px 120px;
+        margin-top: 30px;
+        background-color: #bb493a;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 20px;
+        font-weight: bold;
+        transition: background-color 0.2s;
+    }
+
+
+    .link-button1 {
+        font-family: Arial, sans-serif; 
+        white-space: nowrap; 
+        top: 37%; 
+        left: 11.2%; 
+        font-size: 15px; 
+        position: absolute;
+        display: inline-block;
+        padding: 10px 25px;
+        margin-top: 30px;
+        background-color: #e2ac18;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 20px;
+        font-weight: bold;
+        transition: background-color 0.2s;
+    }
+
+    .animation {
+        width: 215px; 
+        height: 200px; 
+        position: absolute;
+        top: 3%; 
+        left: 45%; 
+        transform: translate(-50%, -50%);
+    }
+
+}
