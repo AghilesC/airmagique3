@@ -325,12 +325,6 @@ $userFullName = $_SESSION['first_name'] . ' ' . $_SESSION['last_name'];
                 <div class="menu-item-description">Generate and send work orders</div>
             </a>
 
-            <a href="../TCPDF/draft.php" class="menu-item">
-                <div class="menu-item-icon"><i class="fas fa-file-edit"></i></div>
-                <div class="menu-item-title">Draft</div>
-                <div class="menu-item-description">Manage draft work order</div>
-            </a>
-
             <a href="../calendar/calendartech.php" class="menu-item">
                 <div class="menu-item-icon"><i class="fas fa-calendar-alt"></i></div>
                 <div class="menu-item-title">Calendar</div>

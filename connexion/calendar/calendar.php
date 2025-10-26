@@ -567,6 +567,7 @@ mysqli_close($connexion);
             font-weight: 500;
             font-size: 12px;
             position: relative;
+            cursor: pointer;
         }
 
         /* Responsive design pour les boutons du calendrier */
@@ -919,35 +920,6 @@ mysqli_close($connexion);
             pointer-events: none;
         }
 
-        /* Tooltip */
-        .tooltip {
-            position: relative;
-            display: inline-block;
-        }
-
-        .tooltip .tooltiptext {
-            visibility: hidden;
-            width: 120px;
-            background-color: #2c3e50;
-            color: #fff;
-            text-align: center;
-            border-radius: 6px;
-            padding: 5px;
-            position: absolute;
-            z-index: 1;
-            bottom: 125%;
-            left: 50%;
-            margin-left: -60px;
-            font-size: 12px;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .tooltip:hover .tooltiptext {
-            visibility: visible;
-            opacity: 1;
-        }
-
         .alert {
             padding: 15px;
             margin-bottom: 20px;
@@ -1158,7 +1130,7 @@ mysqli_close($connexion);
             technicians.forEach(tech => {
                 const option = document.createElement('option');
                 option.value = tech.id; // idacount de la table account
-                option.textContent = tech.name; // Just name and surname
+                option.textContent = tech.name;
                 option.dataset.email = tech.email || '';
                 option.dataset.phone = tech.phone_number || '';
                 select.appendChild(option);
@@ -1232,70 +1204,39 @@ mysqli_close($connexion);
                 eventDisplay: 'block',
                 eventTextColor: '#ffffff',
 
-                // Ajouter l'icône de priorité après le rendu
+                // Ajouter l'icône de priorité et le tooltip simple
                 eventDidMount: function(info) {
-                    const priority = info.event.extendedProps.priority;
+                    const event = info.event;
+                    const props = event.extendedProps;
+                    const priority = props.priority;
+                    
+                    // Ajouter l'icône de priorité
                     if (priority) {
                         const iconClass = getPriorityIcon(priority);
                         const icon = document.createElement('i');
                         icon.className = `priority-icon ${iconClass}`;
-                        
-                        // Ajouter la classe de priorité pour le style
                         info.el.classList.add(`priority-${priority}`);
                         
-                        // Trouver l'élément de contenu et ajouter l'icône
                         const content = info.el.querySelector('.fc-event-main') || info.el.querySelector('.fc-event-title-container') || info.el;
                         content.style.position = 'relative';
                         content.appendChild(icon);
                     }
-                },
-                
-                // Tooltip au survol
-                eventMouseEnter: function(info) {
-                    const event = info.event;
-                    const props = event.extendedProps;
                     
-                    const tooltip = document.createElement('div');
-                    tooltip.className = 'tooltip-event';
-                    tooltip.style.cssText = `
-                        position: absolute;
-                        background: #2c3e50;
-                        color: white;
-                        padding: 10px;
-                        border-radius: 6px;
-                        font-size: 12px;
-                        z-index: 1000;
-                        max-width: 250px;
-                        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-                    `;
-                    
-                    tooltip.innerHTML = `
-                        <strong>${event.title}</strong><br>
-                        ${props.client_name ? `Client: ${props.client_name}<br>` : ''}
-                        ${props.technician_name ? `Technician: ${props.technician_name} (${props.technician_depot || 'No depot'})<br>` : 'No technician assigned<br>'}
-                        Start: ${new Date(event.start).toLocaleString('en-US')}<br>
-                        End: ${new Date(event.end).toLocaleString('en-US')}<br>
-                        Status: ${getStatusText(props.status)}<br>
-                        Priority: ${getPriorityText(props.priority)}
-                    `;
-                    
-                    document.body.appendChild(tooltip);
-                    
-                    const moveTooltip = (e) => {
-                        tooltip.style.left = (e.pageX + 10) + 'px';
-                        tooltip.style.top = (e.pageY + 10) + 'px';
-                    };
-                    
-                    info.el.addEventListener('mousemove', moveTooltip);
-                    info.el.tooltip = tooltip;
-                    info.el.moveTooltip = moveTooltip;
-                },
-
-                eventMouseLeave: function(info) {
-                    if (info.el.tooltip) {
-                        document.body.removeChild(info.el.tooltip);
-                        info.el.removeEventListener('mousemove', info.el.moveTooltip);
+                    // Tooltip simple avec l'attribut title natif
+                    const tooltipLines = [];
+                    tooltipLines.push(event.title);
+                    if (props.client_name) tooltipLines.push('Client: ' + props.client_name);
+                    if (props.technician_name) {
+                        tooltipLines.push('Technician: ' + props.technician_name + ' (' + (props.technician_depot || 'No depot') + ')');
+                    } else {
+                        tooltipLines.push('No technician assigned');
                     }
+                    tooltipLines.push('Start: ' + new Date(event.start).toLocaleString('en-US'));
+                    tooltipLines.push('End: ' + new Date(event.end).toLocaleString('en-US'));
+                    tooltipLines.push('Status: ' + getStatusText(props.status));
+                    tooltipLines.push('Priority: ' + getPriorityText(props.priority));
+                    
+                    info.el.title = tooltipLines.join('\n');
                 }
             });
 
@@ -1439,7 +1380,7 @@ mysqli_close($connexion);
             })
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Erreur réseau: ' + response.status);
+                    throw new Error('Network error: ' + response.status);
                 }
                 return response.json();
             })
@@ -1525,7 +1466,7 @@ mysqli_close($connexion);
             })
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Erreur réseau: ' + response.status);
+                    throw new Error('Network error: ' + response.status);
                 }
                 return response.json();
             })
@@ -1555,11 +1496,6 @@ mysqli_close($connexion);
             calendar.refetchEvents();
             loadTechnicians(); // Recharger aussi les techniciens
             showNotification('Calendar refreshed', 'info');
-        }
-
-        // Exporter le calendrier (fonctionnalité basique)
-        function exportCalendar() {
-            showNotification('Export functionality under development', 'info');
         }
 
         // Fonctions utilitaires

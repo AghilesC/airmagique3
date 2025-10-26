@@ -164,19 +164,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$account_locked) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 }
 
-// Vérification si l'utilisateur est déjà connecté
+// Nettoyage silencieux des sessions expirées
 if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
-    // Vérification de la validité de la session (timeout)
-    $session_timeout = 3600; // 1 heure
+    $session_timeout = 3600;
     if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity']) > $session_timeout) {
+        // Session expirée - nettoyage silencieux
         session_unset();
         session_destroy();
         session_start();
-        $error_message = "Session expired. Please log in again.";
+        // Régénération du token CSRF pour la nouvelle session
+        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
     } else {
+        // Session encore valide - redirection
         $_SESSION['last_activity'] = time();
-        
-        // CORRECTION: Redirection selon les permissions avec idacount
         include_once('permissions.php');
         if (isset($_SESSION['user_id']) && checkAdminPermission($_SESSION['user_id'])) {
             header("Location: ./adminmenu/adminmenu.php");

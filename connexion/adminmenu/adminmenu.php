@@ -226,6 +226,7 @@ if ($connexion) {
         .icon-database { background: #e82226; color: white; }
         .icon-edit { background: #e82226; }
         .icon-calendar { background: #e82226; }
+        .icon-history { background: #e82226; }
 
         .logout-section {
             text-align: center;
@@ -405,6 +406,24 @@ if ($connexion) {
 
         <!-- Menu Grid -->
         <div class="menu-grid">
+            <a href="../calendar/calendar.php" class="menu-item">
+                <div class="menu-item-icon icon-calendar"><i class="fas fa-calendar-alt"></i></div>
+                <div class="menu-item-title">Calendar</div>
+                <div class="menu-item-description">Manage events and scheduling</div>
+            </a>
+
+            <a href="../workorderhistory/workorderhistory.php" class="menu-item">
+                <div class="menu-item-icon icon-history"><i class="fas fa-clipboard-list"></i></div>
+                <div class="menu-item-title">Work Order History</div>
+                <div class="menu-item-description">View and manage work order records</div>
+            </a>
+
+            <a href="../modifaccount/modifaccount.php" class="menu-item">
+                <div class="menu-item-icon icon-edit"><i class="fas fa-user-edit"></i></div>
+                <div class="menu-item-title">Edit Accounts</div>
+                <div class="menu-item-description">Modify existing user accounts</div>
+            </a>
+
             <a href="../validationcompte/validationcompte.php" class="menu-item">
                 <div class="menu-item-icon icon-users"><i class="fas fa-user-check"></i></div>
                 <div class="menu-item-title">
@@ -416,18 +435,6 @@ if ($connexion) {
                     </span>
                 </div>
                 <div class="menu-item-description">Activate / Deactivate user accounts</div>
-            </a>
-
-            <a href="../modifaccount/modifaccount.php" class="menu-item">
-                <div class="menu-item-icon icon-edit"><i class="fas fa-user-edit"></i></div>
-                <div class="menu-item-title">Edit Accounts</div>
-                <div class="menu-item-description">Modify existing user accounts</div>
-            </a>
-
-            <a href="../calendar/calendar.php" class="menu-item">
-                <div class="menu-item-icon icon-calendar"><i class="fas fa-calendar-alt"></i></div>
-                <div class="menu-item-title">Calendar</div>
-                <div class="menu-item-description">Manage events and scheduling</div>
             </a>
         </div>
 
