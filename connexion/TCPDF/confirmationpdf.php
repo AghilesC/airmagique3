@@ -855,6 +855,7 @@ $pdf->Cell($valueWidth, 7, $displayValue, 'RTB', 1, 'L', true);
             max-width: 900px;
             margin: 0 auto;
             padding: 20px;
+            width: 100%;
         }
 
         .header {
@@ -916,9 +917,10 @@ $pdf->Cell($valueWidth, 7, $displayValue, 'RTB', 1, 'L', true);
 
         .form-row {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 20px;
             margin-bottom: 20px;
+            width: 100%;
         }
 
         label {
@@ -1012,15 +1014,18 @@ $pdf->Cell($valueWidth, 7, $displayValue, 'RTB', 1, 'L', true);
             background: #f8f9fa;
             border-radius: 8px;
             border: 1px solid #e9ecef;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
         .signature-canvas {
             border: 2px solid #ced4da;
             border-radius: 8px;
-            margin: 10px 0 10px 50px;
+            margin: 10px 0;
             background: white;
-            width: calc(100% - 50px);
-            max-width: 550px;
+            width: 100%;
+            max-width: 100%;
             height: 150px;
             display: block;
         }
@@ -1039,7 +1044,7 @@ $pdf->Cell($valueWidth, 7, $displayValue, 'RTB', 1, 'L', true);
             align-items: center;
             gap: 8px;
             text-align: center;
-            margin: 5px 5px 5px 50px;
+            margin: 5px;
             justify-content: center;
         }
 
@@ -1088,6 +1093,7 @@ $pdf->Cell($valueWidth, 7, $displayValue, 'RTB', 1, 'L', true);
             gap: 15px;
             margin-top: 30px;
             flex-wrap: wrap;
+            width: 100%;
         }
 
         .btn-group .btn {
@@ -1152,6 +1158,8 @@ $pdf->Cell($valueWidth, 7, $displayValue, 'RTB', 1, 'L', true);
             align-items: center;
             padding: 8px 0;
             border-bottom: 1px solid #dee2e6;
+            gap: 10px;
+            flex-wrap: wrap;
         }
 
         .billing-row:last-child {
@@ -1184,10 +1192,16 @@ $pdf->Cell($valueWidth, 7, $displayValue, 'RTB', 1, 'L', true);
 
         .equipment-row {
             display: grid;
-            grid-template-columns: 2fr 1fr auto;
+            grid-template-columns: minmax(220px, 2fr) minmax(140px, 1fr) auto;
             gap: 10px;
             margin-bottom: 10px;
             align-items: end;
+        }
+
+        .equipment-row > div:last-child {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
         }
 
         .btn-add {
@@ -1233,6 +1247,7 @@ $pdf->Cell($valueWidth, 7, $displayValue, 'RTB', 1, 'L', true);
             grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             gap: 15px;
             margin-top: 15px;
+            width: 100%;
         }
 
         .image-preview-item {
@@ -1292,6 +1307,32 @@ $pdf->Cell($valueWidth, 7, $displayValue, 'RTB', 1, 'L', true);
         }
 
         /* Responsive Design */
+        @media (max-width: 992px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            .header {
+                padding: 24px;
+            }
+
+            .form-container {
+                padding: 24px;
+            }
+
+            .equipment-row {
+                grid-template-columns: minmax(220px, 1fr) minmax(140px, 1fr);
+            }
+
+            .btn-group {
+                justify-content: center;
+            }
+        }
+
         @media (max-width: 768px) {
             body {
                 padding: 15px;
@@ -1312,39 +1353,66 @@ $pdf->Cell($valueWidth, 7, $displayValue, 'RTB', 1, 'L', true);
 
             .equipment-row {
                 grid-template-columns: 1fr;
+                align-items: stretch;
+            }
+
+            .equipment-row > div:last-child {
+                justify-content: flex-start;
             }
 
             .btn-group {
                 flex-direction: column;
+                align-items: stretch;
             }
 
             .btn {
                 width: 100%;
-                margin: 5px 0;
+            }
+
+            .signature-section {
+                padding: 16px;
             }
 
             .signature-canvas {
-                height: 120px;
-                margin-left: 0;
-                width: 100%;
+                height: 140px;
             }
 
-            .btn {
-                margin-left: 5px;
+            .billing-section {
+                padding: 15px;
             }
 
             .image-preview-container {
                 grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
             }
+
+            .image-preview-item img {
+                height: 120px;
+            }
+
+            .image-name {
+                font-size: 11px;
+            }
         }
 
         @media (max-width: 480px) {
+            .header {
+                padding: 16px;
+            }
+
             .page-title {
-                font-size: 24px;
+                font-size: 22px;
             }
 
             .form-container {
-                padding: 15px;
+                padding: 16px;
+            }
+
+            .signature-canvas {
+                height: 130px;
+            }
+
+            .btn {
+                font-size: 13px;
             }
         }
     </style>
